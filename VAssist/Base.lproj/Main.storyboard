@@ -9,7 +9,6 @@
         <!--Navigation Controller-->
         <scene sceneID="4Mn-MA-ruB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1bn-U8-fFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="dVS-0A-coF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n9n-eH-sLI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -19,6 +18,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CIm-Nz-FnB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1bn-U8-fFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1542" y="78"/>
         </scene>
@@ -35,21 +35,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzy-Bt-IGT">
-                                <frame key="frameInset" minX="164" minY="178" width="46" height="30"/>
+                                <frame key="frameInset" minX="157" minY="318" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="2ak-LF-3CV" kind="push" id="SbY-ag-pcI"/>
+                                    <segue destination="2ak-LF-3CV" kind="push" identifier="door" id="SbY-ag-pcI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuS-ps-VFz">
+                                <frame key="frameInset" minY="91" width="375" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-Wy-U7b">
+                                <frame key="frameInset" minY="162" width="375" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="VAssist" id="o5c-Cf-Gkn"/>
+                    <connections>
+                        <outlet property="beaconStatus" destination="xuS-ps-VFz" id="xye-SH-V03"/>
+                        <outlet property="doorStatus" destination="Dwk-Wy-U7b" id="086-MT-cjX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-660" y="78"/>
+            <point key="canvasLocation" x="-660" y="77.811094452773617"/>
         </scene>
         <!--Door-->
         <scene sceneID="BV5-os-sbQ">
