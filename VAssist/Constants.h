@@ -11,6 +11,11 @@
 extern NSString *const VA_DOOR;
 extern NSString *const VA_DOOR_OPENED;
 extern NSString *const VA_DOOR_CLOSED;
+
+extern NSString *const VA_MUSIC_ROOM;
+extern NSString *const VA_MUSIC_ON;
+extern NSString *const VA_MUSIC_OFF;
+
 extern NSString *const VA_UUID;
 
 #ifndef Constants_h

@@ -8,21 +8,34 @@
 
 #import "ViewController.h"
 #import "Constants.h"
+#import "ObjectViewController.h"
+#import "Devices+CoreDataProperties.h"
 
 @interface ViewController () {
     CLBeaconRegion *beaconRegion;
     __weak IBOutlet UILabel *beaconStatus;
     __weak IBOutlet UILabel *doorStatus;
     int counter;
+    NSMutableArray *devices;
+    BOOL isModalPresented;
+    ObjectViewController *objectVC;
 }
 
 @end
 
 @implementation ViewController
+- (IBAction)testButtonAction:(UIButton *)sender {
+    [self presentObjectDetectedVC: @"test"];
+}
 
--(NSString *)checkDoorStatus {
+-(NSString *)checkDoorStatus:(NSString *)deviceName {
     //check current door status from local db and return the value
-    
+    for(int i=0; i <  devices.count; i++) {
+        NSDictionary *device = devices[i];
+        if(device[@"p_id"] == deviceName) {
+            return device[@"p_status"];
+        }
+    }
     return nil;
 }
 
@@ -36,6 +49,7 @@
     self.locationManager.delegate = self;
     
     NSString *idString = VA_UUID;
+    //same UUID can be used for multiple beacons. The proximity id can be used to identify them uniquely. One location can have one UUID and multiple beacons
     NSUUID * uuid = [[NSUUID alloc] initWithUUIDString: idString];//[UIDevice currentDevice].identifierForVendor;
     
     beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier: VA_DOOR];
@@ -49,12 +63,41 @@
     [self.locationManager startRangingBeaconsInRegion:beaconRegion];
 }
 
+-(void)initDataModel {
+    devices = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *device = [[NSMutableDictionary alloc] init];
+    [device setObject:VA_DOOR forKey:@"p_id"];
+    device[@"p_desc"] = @"Bed room door";
+    device[@"p_status"] = VA_DOOR_CLOSED;
+    [devices addObject:device];
+    
+    [device setObject:VA_MUSIC_ROOM forKey:@"p_id"];
+    device[@"p_desc"] = @"Music room door";
+    device[@"p_status"] = VA_MUSIC_OFF;
+    [devices addObject:device];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self initDataModel];
+    isModalPresented = NO;
+    
     counter = 0;
     [self initBeacon];
+}
 
+-(void)presentObjectDetectedVC:(NSString *)message {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    objectVC = (ObjectViewController *)[storyboard instantiateViewControllerWithIdentifier:@"objectVC"];
+    objectVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    objectVC.vcTitle = @"My Title";
+    objectVC.message = message;
+    
+    isModalPresented = YES;
+    [self.navigationController presentViewController:objectVC animated:YES completion:nil];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region {
@@ -63,27 +106,45 @@
     CLBeacon *beacon;
     if([region.identifier isEqualToString:VA_DOOR]) {
         if(beacons != nil && beacons.count > 0) {
-            [self performSegueWithIdentifier:@"door" sender:self];
+            
+            //[self presentObjectDetectedVC];
+            
             beacon = beacons[0];
             NSString *beaconPlace = @"";
+            BOOL closeModal = YES;
+            NSString *message = @"";
+            
             if(beacon.proximity == CLProximityImmediate) {
                 beaconPlace = @"Immediate";
             }
             else if(beacon.proximity == CLProximityNear) {
                 beaconPlace = @"Near";
                 doorStatus.text = @"You are near a door. Do you want to open the door?";
-                if([[self checkDoorStatus] isEqualToString:VA_DOOR_OPENED]) {
-                    
+                if([[self checkDoorStatus: VA_DOOR] isEqualToString:VA_DOOR_CLOSED]) {
+                    //open the door
+                    message = @"The door is closed. Do you want to open the door?";
                 }
                 else {
-                    
+                    //close the door
+                    message = @"The door is opened. Do you want to close the door?";
                 }
+                closeModal = NO;
             }
             else if(beacon.proximity == CLProximityFar) {
                 beaconPlace = @"Far";
             }
             else {
                 beaconPlace = @"Unknown";
+            }
+            if(closeModal) {
+                if(objectVC != nil && isModalPresented) {
+                    [objectVC dismissViewControllerAnimated:YES completion:nil];
+                }
+            }
+            else {
+                if(!isModalPresented) {
+                    [self presentObjectDetectedVC: message];   
+                }
             }
             [beaconStatus setText: [NSString stringWithFormat:@"%d - %@", counter++, beaconPlace]];
         }

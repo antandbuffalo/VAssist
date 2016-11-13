@@ -14,9 +14,13 @@
 		333038291DB9021D000A6B6E /* VAssist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 333038271DB9021D000A6B6E /* VAssist.xcdatamodeld */; };
 		3330382B1DB9021D000A6B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3330382A1DB9021D000A6B6E /* Assets.xcassets */; };
 		3330382E1DB9021D000A6B6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3330382C1DB9021D000A6B6E /* LaunchScreen.storyboard */; };
+		335622451DD8989000D1D335 /* ObjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335622441DD8989000D1D335 /* ObjectViewController.m */; };
+		335622731DD8C4BE00D1D335 /* Messages+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3356226C1DD8C4BE00D1D335 /* Messages+CoreDataClass.m */; };
+		335622741DD8C4BE00D1D335 /* Messages+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3356226E1DD8C4BE00D1D335 /* Messages+CoreDataProperties.m */; };
+		335622751DD8C4BE00D1D335 /* Devices+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 335622701DD8C4BE00D1D335 /* Devices+CoreDataClass.m */; };
+		335622761DD8C4BE00D1D335 /* Devices+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 335622721DD8C4BE00D1D335 /* Devices+CoreDataProperties.m */; };
 		33F4EA1B1DBBBA7900CC98CC /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F4EA1A1DBBBA7900CC98CC /* Constants.m */; };
 		33F4EA1E1DBBC19500CC98CC /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F4EA1D1DBBC19500CC98CC /* Utility.m */; };
-		33F4EA201DBBCECE00CC98CC /* DataModel in Resources */ = {isa = PBXBuildFile; fileRef = 33F4EA1F1DBBCECE00CC98CC /* DataModel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +35,20 @@
 		3330382A1DB9021D000A6B6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3330382D1DB9021D000A6B6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3330382F1DB9021D000A6B6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		335622431DD8989000D1D335 /* ObjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectViewController.h; sourceTree = "<group>"; };
+		335622441DD8989000D1D335 /* ObjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectViewController.m; sourceTree = "<group>"; };
+		3356226B1DD8C4BE00D1D335 /* Messages+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Messages+CoreDataClass.h"; sourceTree = "<group>"; };
+		3356226C1DD8C4BE00D1D335 /* Messages+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Messages+CoreDataClass.m"; sourceTree = "<group>"; };
+		3356226D1DD8C4BE00D1D335 /* Messages+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Messages+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3356226E1DD8C4BE00D1D335 /* Messages+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Messages+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3356226F1DD8C4BE00D1D335 /* Devices+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Devices+CoreDataClass.h"; sourceTree = "<group>"; };
+		335622701DD8C4BE00D1D335 /* Devices+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Devices+CoreDataClass.m"; sourceTree = "<group>"; };
+		335622711DD8C4BE00D1D335 /* Devices+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Devices+CoreDataProperties.h"; sourceTree = "<group>"; };
+		335622721DD8C4BE00D1D335 /* Devices+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Devices+CoreDataProperties.m"; sourceTree = "<group>"; };
 		33F4EA191DBBBA6600CC98CC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		33F4EA1A1DBBBA7900CC98CC /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		33F4EA1C1DBBC19500CC98CC /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		33F4EA1D1DBBC19500CC98CC /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		33F4EA1F1DBBCECE00CC98CC /* DataModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DataModel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +81,20 @@
 		3330381A1DB9021D000A6B6E /* VAssist */ = {
 			isa = PBXGroup;
 			children = (
-				33F4EA1F1DBBCECE00CC98CC /* DataModel */,
+				3356226B1DD8C4BE00D1D335 /* Messages+CoreDataClass.h */,
+				3356226C1DD8C4BE00D1D335 /* Messages+CoreDataClass.m */,
+				3356226D1DD8C4BE00D1D335 /* Messages+CoreDataProperties.h */,
+				3356226E1DD8C4BE00D1D335 /* Messages+CoreDataProperties.m */,
+				3356226F1DD8C4BE00D1D335 /* Devices+CoreDataClass.h */,
+				335622701DD8C4BE00D1D335 /* Devices+CoreDataClass.m */,
+				335622711DD8C4BE00D1D335 /* Devices+CoreDataProperties.h */,
+				335622721DD8C4BE00D1D335 /* Devices+CoreDataProperties.m */,
 				3330381E1DB9021D000A6B6E /* AppDelegate.h */,
 				3330381F1DB9021D000A6B6E /* AppDelegate.m */,
 				333038211DB9021D000A6B6E /* ViewController.h */,
 				333038221DB9021D000A6B6E /* ViewController.m */,
+				335622431DD8989000D1D335 /* ObjectViewController.h */,
+				335622441DD8989000D1D335 /* ObjectViewController.m */,
 				333038241DB9021D000A6B6E /* Main.storyboard */,
 				3330382A1DB9021D000A6B6E /* Assets.xcassets */,
 				3330382C1DB9021D000A6B6E /* LaunchScreen.storyboard */,
@@ -154,7 +176,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33F4EA201DBBCECE00CC98CC /* DataModel in Resources */,
 				3330382E1DB9021D000A6B6E /* LaunchScreen.storyboard in Resources */,
 				3330382B1DB9021D000A6B6E /* Assets.xcassets in Resources */,
 				333038261DB9021D000A6B6E /* Main.storyboard in Resources */,
@@ -171,9 +192,14 @@
 				33F4EA1B1DBBBA7900CC98CC /* Constants.m in Sources */,
 				333038231DB9021D000A6B6E /* ViewController.m in Sources */,
 				333038291DB9021D000A6B6E /* VAssist.xcdatamodeld in Sources */,
+				335622761DD8C4BE00D1D335 /* Devices+CoreDataProperties.m in Sources */,
+				335622751DD8C4BE00D1D335 /* Devices+CoreDataClass.m in Sources */,
+				335622451DD8989000D1D335 /* ObjectViewController.m in Sources */,
 				333038201DB9021D000A6B6E /* AppDelegate.m in Sources */,
+				335622741DD8C4BE00D1D335 /* Messages+CoreDataProperties.m in Sources */,
 				33F4EA1E1DBBC19500CC98CC /* Utility.m in Sources */,
 				3330381D1DB9021D000A6B6E /* main.m in Sources */,
+				335622731DD8C4BE00D1D335 /* Messages+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
