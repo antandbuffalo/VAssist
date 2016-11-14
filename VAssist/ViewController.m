@@ -31,11 +31,12 @@
 
 -(NSString *)checkDoorStatus:(NSString *)deviceName {
     //check current door status from local db and return the value
-    for(int i=0; i <  devices.count; i++) {
-        NSDictionary *device = devices[i];
-        if(device[@"p_id"] == deviceName) {
-            return device[@"p_status"];
-        }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"p_id == %@", deviceName];
+    NSMutableArray *records = [Utility recordsForThePredicate:predicate forTable:@"Devices"];
+    if(records.count > 0) {
+        Devices *device = [records objectAtIndex:0];
+        NSLog(@"sta - %@", device.p_status);
     }
     return nil;
 }
@@ -73,6 +74,7 @@
     
     counter = 0;
     [self initBeacon];
+    [self checkDoorStatus:VA_DOOR];
 }
 
 -(void)presentObjectDetectedVC:(NSString *)message {
