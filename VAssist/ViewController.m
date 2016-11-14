@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "ObjectViewController.h"
 #import "Devices+CoreDataProperties.h"
+#import "Utility.h"
 
 @interface ViewController () {
     CLBeaconRegion *beaconRegion;
@@ -63,26 +64,11 @@
     [self.locationManager startRangingBeaconsInRegion:beaconRegion];
 }
 
--(void)initDataModel {
-    devices = [[NSMutableArray alloc] init];
-    
-    NSMutableDictionary *device = [[NSMutableDictionary alloc] init];
-    [device setObject:VA_DOOR forKey:@"p_id"];
-    device[@"p_desc"] = @"Bed room door";
-    device[@"p_status"] = VA_DOOR_CLOSED;
-    [devices addObject:device];
-    
-    [device setObject:VA_MUSIC_ROOM forKey:@"p_id"];
-    device[@"p_desc"] = @"Music room door";
-    device[@"p_status"] = VA_MUSIC_OFF;
-    [devices addObject:device];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    [self initDataModel];
+
+    [Utility initDatabase];
     isModalPresented = NO;
     
     counter = 0;
@@ -143,7 +129,7 @@
             }
             else {
                 if(!isModalPresented) {
-                    [self presentObjectDetectedVC: message];   
+                    [self presentObjectDetectedVC: message];
                 }
             }
             [beaconStatus setText: [NSString stringWithFormat:@"%d - %@", counter++, beaconPlace]];
