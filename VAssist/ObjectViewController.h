@@ -11,6 +11,7 @@
 @interface ObjectViewController : UIViewController
 
 @property (nonatomic, strong) NSString *vcTitle;
-@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSMutableDictionary *objectDetails;
+@property (nonatomic, copy) void (^didDismiss)(NSString *data);
 
 @end

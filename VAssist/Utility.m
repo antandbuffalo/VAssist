@@ -20,7 +20,7 @@
 
 +(void)initDatabase {
     NSLog(@"doc - %@", [Utility applicationDocumentsDirectory]);
-    NSMutableArray *records = [Utility recordsForThePredicate:nil forTable:@"Devices"];
+    NSMutableArray *records = [Utility recordsForThePredicate: [NSPredicate predicateWithFormat:@"TRUEPREDICATE"] forTable:@"Devices"];
     NSLog(@"records -- %@", records);
     
     if(records.count == 0) {
@@ -72,6 +72,7 @@
 +(NSManagedObjectContext *)context {
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = myDelegate.persistentContainer.viewContext;
+    NSLog(@"-- %@", [NSPersistentContainer persistentContainerWithName:@"VAssist"]);
     return context;
 }
 

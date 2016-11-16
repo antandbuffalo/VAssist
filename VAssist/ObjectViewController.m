@@ -7,6 +7,9 @@
 //
 
 #import "ObjectViewController.h"
+#import "Constants.h"
+#import "Utility.h"
+#import "Devices+CoreDataProperties.h"
 
 @interface ObjectViewController ()
 
@@ -17,6 +20,56 @@
 
 @implementation ObjectViewController
 
+- (IBAction)btnYesAction:(UIButton *)sender {
+    //send service call to RP to open or close
+    if(self.objectDetails[@"type"] == VA_DOOR) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"p_id == %@", VA_DOOR];
+        NSArray *records = [Utility recordsForThePredicate:predicate forTable:@"Devices"];
+        NSString *newStatus = @"";
+
+        if(self.objectDetails[@"status"] == VA_DOOR_OPENED) {
+            //close the door - send service to RP
+            newStatus = VA_DOOR_CLOSED;
+        }
+        else {
+            //open the door - send service to RP
+            newStatus = VA_DOOR_OPENED;
+        }
+        if(records.count > 0) {
+            Devices *device = [records objectAtIndex:0];
+            device.p_status = newStatus;
+            [Utility saveCurrentContext];
+        }
+    }
+    else if(self.objectDetails[@"type"] == VA_MUSIC_ROOM) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"p_id == %@", VA_MUSIC_ROOM];
+        NSArray *records = [Utility recordsForThePredicate:predicate forTable:@"Devices"];
+        NSString *newStatus = @"";
+        
+        if(self.objectDetails[@"status"] == VA_MUSIC_ON) {
+            //close the door - send service to RP
+            newStatus = VA_MUSIC_OFF;
+        }
+        else {
+            //open the door - send service to RP
+            newStatus = VA_MUSIC_ON;
+        }
+        if(records.count > 0) {
+            Devices *device = [records objectAtIndex:0];
+            device.p_status = newStatus;
+            [Utility saveCurrentContext];
+        }
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if(self.didDismiss) {
+        self.didDismiss(@"complete");
+    }
+}
+
+- (IBAction)btnNoAction:(UIButton *)sender {
+    //Do nothing
+}
+
 - (IBAction)closeModal:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -25,8 +78,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navTitle.title = self.vcTitle;
-    self.lblMessage.text = self.message;
+    self.navTitle.title = self.objectDetails[@"title"];
+    self.lblMessage.text = self.objectDetails[@"message"];
+    
+    //display voice message here
 }
 
 - (void)didReceiveMemoryWarning {
